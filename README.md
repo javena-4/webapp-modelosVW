@@ -42,7 +42,9 @@ Abrí [http://localhost:3000](http://localhost:3000).
 
 ## Deploy gratis (Vercel + Neon)
 
-Hosting **gratuito** para compartir con el profesor u otras personas.
+Hosting **gratuito** público:
+
+**URL de producción:** https://webapp-modelos-vw.vercel.app
 
 ### 1) Neon (base de datos)
 
