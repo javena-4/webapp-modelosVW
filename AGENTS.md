@@ -25,6 +25,14 @@ Referencia oficial de modelos: lineup AR (Tera, Polo, Virtus, Nivus, T-Cross, Ta
 
 ## Reglas del agente
 
+### 0. Git: trabajar siempre en `dev`
+
+- Rama de trabajo diaria: **`dev`** (creada desde `main`)
+- `main` queda estable; no commits directos ahí salvo merge explícito / release
+- Al empezar una sesión: `git checkout dev` y `git pull origin dev`
+- Push de trabajo: `git push origin dev`
+- Para llevar cambios a producción/estable: PR o merge `dev` → `main`
+
 ### 1. Siempre planificá antes de meter código
 
 Antes de implementar: alcance, archivos a tocar, impacto en UI/API/DB y checklist de prueba.

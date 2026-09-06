@@ -8,6 +8,17 @@ Diseño basado en [`design.md`](design.md) y en la estructura visual de
 
 > Demo educativa. No es el sitio oficial de Volkswagen Argentina S.A.
 
+## Git
+
+- Remoto: `https://github.com/javena-4/webapp-modelosVW.git`
+- Rama de trabajo: **`dev`**
+- Rama estable: `main`
+
+```bash
+git checkout dev
+git pull origin dev
+```
+
 ## Setup
 
 ```bash
