@@ -3,14 +3,15 @@ import { execSync } from "node:child_process";
 import { POST } from "@/app/api/leads/route";
 import { prisma } from "@/lib/prisma";
 
-describe("POST /api/leads (integration)", () => {
+const hasPostgres = Boolean(
+  process.env.DATABASE_URL?.startsWith("postgresql"),
+);
+
+describe.skipIf(!hasPostgres)("POST /api/leads (integration)", () => {
   beforeAll(() => {
     execSync("npx prisma db push --skip-generate", {
       stdio: "inherit",
-      env: {
-        ...process.env,
-        DATABASE_URL: process.env.DATABASE_URL ?? "file:./test.db",
-      },
+      env: process.env,
     });
   });
 

@@ -32,6 +32,7 @@ Referencia oficial de modelos: lineup AR (Tera, Polo, Virtus, Nivus, T-Cross, Ta
 - Al empezar una sesión: `git checkout dev` y `git pull origin dev`
 - Push de trabajo: `git push origin dev`
 - Para llevar cambios a producción/estable: PR o merge `dev` → `main`
+- Deploy público: **Vercel + Neon** (gratis). No DigitalOcean free (solo estáticos) ni Firebase Hosting clásico para este stack.
 
 ### 1. Siempre planificá antes de meter código
 
@@ -45,7 +46,8 @@ Este producto es un **catálogo público + captura de leads + panel admin livian
 Stack actual (no cambiar sin motivo fuerte):
 
 - Next.js (App Router) + TypeScript + Tailwind CSS
-- Prisma + SQLite (leads locales, fácil de demo)
+- Prisma + **Postgres (Neon free)** en la nube; no SQLite en Vercel
+- Hosting público gratis: **Vercel**
 - `jose` para sesión admin (cookie JWT)
 - `zod` para validación server-side
 
