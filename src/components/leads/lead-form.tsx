@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import type { Car } from "@/data/cars";
+import { INCOME_RANGES } from "@/data/income-ranges";
 
 type Props = {
   cars: Car[];
@@ -19,10 +20,13 @@ export function LeadForm({
   onSelectedSlugChange,
   lockCar = false,
   title = "Contacto",
-  description = "Dejanos tu nombre, email y el modelo que te interesa. Un asesor te contacta con disponibilidad y planes.",
+  description = "Dejanos tus datos, el modelo de interés y tu rango de ingresos. El teléfono es opcional. Un asesor te contacta con disponibilidad y planes.",
 }: Props) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneAreaCode, setPhoneAreaCode] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [incomeRange, setIncomeRange] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">(
     "idle",
   );
@@ -42,6 +46,9 @@ export function LeadForm({
         body: JSON.stringify({
           fullName,
           email,
+          phoneAreaCode,
+          phoneNumber,
+          incomeRange,
           carSlug: selectedSlug,
         }),
       });
@@ -57,6 +64,9 @@ export function LeadForm({
       setMessage("¡Listo! Recibimos tu consulta. Te vamos a contactar.");
       setFullName("");
       setEmail("");
+      setPhoneAreaCode("");
+      setPhoneNumber("");
+      setIncomeRange("");
     } catch {
       setStatus("error");
       setMessage("Error de red. Revisá tu conexión e intentá otra vez.");
@@ -102,6 +112,60 @@ export function LeadForm({
               placeholder="tu@email.com"
               autoComplete="email"
             />
+          </label>
+
+          <fieldset className="space-y-1">
+            <legend className="text-sm text-[var(--text-secondary)]">
+              Teléfono <span className="text-[var(--text-secondary)]/80">(opcional)</span>
+            </legend>
+            <div className="grid grid-cols-[100px_1fr] gap-2">
+              <label className="block text-sm text-[var(--text-secondary)]">
+                <span className="sr-only">Código de área</span>
+                <input
+                  name="phoneAreaCode"
+                  inputMode="numeric"
+                  value={phoneAreaCode}
+                  onChange={(e) => setPhoneAreaCode(e.target.value)}
+                  className="h-[48px] w-full rounded-[10px] border border-[var(--border-strong)] px-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent-blue)]"
+                  placeholder="11"
+                  autoComplete="tel-area-code"
+                  aria-label="Código de área"
+                />
+              </label>
+              <label className="block text-sm text-[var(--text-secondary)]">
+                <span className="sr-only">Número de teléfono</span>
+                <input
+                  name="phoneNumber"
+                  inputMode="numeric"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className="h-[48px] w-full rounded-[10px] border border-[var(--border-strong)] px-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent-blue)]"
+                  placeholder="4567-8901"
+                  autoComplete="tel-national"
+                  aria-label="Número de teléfono"
+                />
+              </label>
+            </div>
+          </fieldset>
+
+          <label className="block space-y-1 text-sm text-[var(--text-secondary)]">
+            Ingresos mensuales
+            <select
+              required
+              name="incomeRange"
+              value={incomeRange}
+              onChange={(e) => setIncomeRange(e.target.value)}
+              className="h-[48px] w-full rounded-[10px] border border-[var(--border-strong)] px-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent-blue)]"
+            >
+              <option value="" disabled>
+                Seleccioná un rango
+              </option>
+              {INCOME_RANGES.map((range) => (
+                <option key={range.value} value={range.value}>
+                  {range.label}
+                </option>
+              ))}
+            </select>
           </label>
 
           <label className="block space-y-1 text-sm text-[var(--text-secondary)]">

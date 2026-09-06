@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { LogoutButton } from "@/components/logout-button";
+import { getIncomeRangeLabel } from "@/data/income-ranges";
 import { requireAdminSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -36,6 +37,8 @@ export default async function AdminLeadsPage() {
               <th className="px-4 py-3 font-medium">Fecha</th>
               <th className="px-4 py-3 font-medium">Nombre</th>
               <th className="px-4 py-3 font-medium">Email</th>
+              <th className="px-4 py-3 font-medium">Teléfono</th>
+              <th className="px-4 py-3 font-medium">Ingresos</th>
               <th className="px-4 py-3 font-medium">Auto</th>
             </tr>
           </thead>
@@ -43,7 +46,7 @@ export default async function AdminLeadsPage() {
             {leads.length === 0 ? (
               <tr>
                 <td
-                  colSpan={4}
+                  colSpan={6}
                   className="px-4 py-10 text-center text-[var(--ink-muted)]"
                 >
                   Todavía no hay leads. Probá el formulario público.
@@ -68,6 +71,12 @@ export default async function AdminLeadsPage() {
                     >
                       {lead.email}
                     </a>
+                  </td>
+                  <td className="px-4 py-3 text-[var(--ink)]">
+                    {lead.phone ?? "—"}
+                  </td>
+                  <td className="px-4 py-3 text-[var(--ink)]">
+                    {getIncomeRangeLabel(lead.incomeRange)}
                   </td>
                   <td className="px-4 py-3">{lead.carName}</td>
                 </tr>

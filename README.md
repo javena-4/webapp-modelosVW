@@ -14,6 +14,8 @@ Diseño basado en [`design.md`](design.md) y en la estructura visual de
 - **Código en GitHub:** https://github.com/javena-4/webapp-modelosVW
 - Admin: `/admin/login` (credenciales solo en variables de entorno del host; no están en el repo)
 
+Formulario de leads: nombre, email, teléfono opcional (código de área + número), rango de ingresos y modelo.
+
 ## Git
 
 - Remoto: `https://github.com/javena-4/webapp-modelosVW.git`
