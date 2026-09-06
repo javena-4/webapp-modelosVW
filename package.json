@@ -17,6 +17,8 @@
     "test:all": "npm run test && npm run test:e2e"
   },
   "dependencies": {
+    "@neon/config": "^1.3.0",
+    "@neon/env": "^1.2.1",
     "@prisma/client": "^6.19.3",
     "jose": "^6.2.12",
     "next": "16.3.4",

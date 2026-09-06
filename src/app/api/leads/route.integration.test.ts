@@ -13,7 +13,7 @@ describe.skipIf(!hasPostgres)("POST /api/leads (integration)", () => {
       stdio: "inherit",
       env: process.env,
     });
-  });
+  }, 60_000);
 
   it("rechaza payload inválido", async () => {
     const res = await POST(
