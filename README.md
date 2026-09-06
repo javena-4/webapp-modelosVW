@@ -8,6 +8,12 @@ Diseño basado en [`design.md`](design.md) y en la estructura visual de
 
 > Demo educativa. No es el sitio oficial de Volkswagen Argentina S.A.
 
+## Demo en vivo
+
+- **Sitio público:** https://webapp-modelos-vw.vercel.app
+- **Código en GitHub:** https://github.com/javena-4/webapp-modelosVW
+- Admin: `/admin/login` (credenciales solo en variables de entorno del host; no están en el repo)
+
 ## Git
 
 - Remoto: `https://github.com/javena-4/webapp-modelosVW.git`
